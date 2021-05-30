@@ -25,7 +25,7 @@ const Header: React.FC = () => {
         </div>
       )}
       <div className={classes.header__button}>
-        <div className={classes["header__button-text"]}>{`My Cart`}</div>
+        <div className={classes["header__button-text"]} onClick={toggleDispalyMiniCart}>{`My Cart${totalAmount > 0 ? `(${totalAmount})` : ""}`}</div>
       </div>
     </header>
   );
