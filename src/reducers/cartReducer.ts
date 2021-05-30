@@ -32,9 +32,13 @@ export const cartReducer = (state: State = initialState, action: Action) => {
       };
     
     case "REMOVE":
-      return state;
+      return {
+        cart: state.cart.filter((item) => item.key !== action.item.key),
+        totalAmount: state.totalAmount - 1,
+        totalPrice: state.totalPrice - action.item.price,
+      };
     case "CLEAR":
-      return state;
+      return initialState;
     default:
       return state;
   }

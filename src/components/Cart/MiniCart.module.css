@@ -40,3 +40,37 @@
   align-items: center;
   /* flex-direction: column; */
 }
+.cart__item-delete {
+  border: 1px solid red;
+  color: red;
+  cursor: pointer;
+  font-weight: 200;
+  margin: 1px 0 1px 28px;
+  border-radius: 2px;
+}
+
+.cart__summary {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-between;
+  margin: 12px 24px 24px 24px;
+
+}
+
+.cart__summary-clear {
+  border: 1px solid red;
+  color: white;
+  cursor: pointer;
+  background-color: red;
+  width: 48px;
+  padding: 4px;
+  /* justify-content: center;
+  align-items: center; */
+  
+}
+
+.cart__summary-total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
