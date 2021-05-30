@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 
 import classes from "./Product.module.css";
 
@@ -8,6 +9,22 @@ import { tee } from "../../models/data";
 const Product: React.FC = () => {
   const [product, setProduct] = useState<ProductItem>(tee);
   const [selectedSize, setSelectedSize] = useState<Size>(null);
+
+  const dispatch = useDispatch();
+  const addToCartHandler = () => {
+    console.log("CLICKED!")
+    dispatch({
+      type: "ADD",
+      item: {
+        key: product.key + selectedSize,
+        name: product.name,
+        size: selectedSize,
+        image: product.image,
+        price: product.price,
+        amount: 1
+      }
+    })
+  }
 
   useEffect(() => {
     setProduct(tee);
@@ -47,13 +64,13 @@ const Product: React.FC = () => {
                       borderColor:
                         size === selectedSize ? "#222222" : "#CCCCCC",
                     }}
-                    onClick={()=>{}}>
+                    onClick={()=> {setSelectedSize(size)}}>
                     {size}
                   </div>
                 );
               })}
             </div>
-            <div className={classes["product__buy-button"]}>ADD TO CART</div>
+            <div className={classes["product__buy-button"]} onClick={addToCartHandler}>ADD TO CART</div>
           </div>
         </main>
       )}
