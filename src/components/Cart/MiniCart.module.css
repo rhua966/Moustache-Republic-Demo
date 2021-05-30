@@ -40,6 +40,7 @@
   align-items: center;
   /* flex-direction: column; */
 }
+
 .cart__item-delete {
   border: 1px solid red;
   color: red;

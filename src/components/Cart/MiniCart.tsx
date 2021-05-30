@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useSelector, useDispatch } from "react-redux";
 import { CartItem, State } from "../../models/types";
 
@@ -10,12 +9,10 @@ type MiniCartProp = {
 };
 
 const MiniCart: React.FC<MiniCartProp> = ({ display }) => {
-  const cart = useSelector<State, State["cart"]>((state) => state.cart);
   const dispatch = useDispatch();
-  const totalPrice = useSelector<State, State["totalPrice"]>(
-    (state) => state.totalPrice
-  );
-
+  const cart = useSelector<State, State["cart"]>((state) => state.cart);
+  const totalPrice = useSelector<State, State["totalPrice"]>((state) => state.totalPrice);
+  
   const deleteHandler = (item: CartItem) => {
     dispatch({
       type: "REMOVE",
@@ -25,12 +22,14 @@ const MiniCart: React.FC<MiniCartProp> = ({ display }) => {
 
   const clearHandler = () => {
     dispatch({
-      type: "CLEAR",
-    });
-  };
+      type: "CLEAR"
+    })
+  }
 
   return (
-    <div className={classes.cart}>
+    <div
+      className={classes.cart}
+      style={display ? { border: "1px solid" } : {}}>
       {cart.length === 0 ? (
         <div
           style={{

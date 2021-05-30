@@ -11,21 +11,33 @@ const Header: React.FC = () => {
   const totalAmount = useSelector<State, State["totalAmount"]>(
     (state) => state.totalAmount
   );
-
-  const toggleDispalyMiniCart = () => {
+  const toggleDisplayMiniCart = () => {
     setDisplayMiniCart((prevState) => !prevState);
-    // console.log(totalAmount);
-  };
 
+  };
   return (
     <header className={classes.header}>
       {displayMiniCart && (
         <div className={classes.header__cart}>
-          <MiniCart display={displayMiniCart} />
+          <MiniCart display={ displayMiniCart }/>
         </div>
       )}
-      <div className={classes.header__button}>
-        <div className={classes["header__button-text"]} onClick={toggleDispalyMiniCart}>{`My Cart${totalAmount > 0 ? `(${totalAmount})` : ""}`}</div>
+      <div
+        className={classes.header__button}
+        style={
+          displayMiniCart
+            ? {
+                border: "1px solid gray",
+                background: "white",
+                borderBottomColor: "#ffffff",
+              }
+            : { border: 0 }
+        }>
+        <div
+          className={classes["header__button-text"]}
+          onClick={toggleDisplayMiniCart}>
+          {`My Cart${totalAmount > 0 ? `(${totalAmount})` : ""}`}
+        </div>
       </div>
     </header>
   );
